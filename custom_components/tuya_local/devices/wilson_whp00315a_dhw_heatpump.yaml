@@ -1,0 +1,40 @@
+name: Hot Water Heat Pump
+
+products:
+  - id: cxgbazubxeai6txu
+    manufacturer: Wilson Heat Pumps
+    model: WHP-00315A
+
+entities:
+  - entity: switch
+    dps:
+      - id: 1
+        type: boolean
+        name: switch
+
+  - entity: select
+    name: Mode
+    icon: "mdi:heat-pump"
+    dps:
+      - id: 2
+        type: string
+        name: option
+        mapping:
+          - dps_val: smart
+            value: Smart
+          - dps_val: mute
+            value: Silent
+          - dps_val: strong
+            value: Powerful
+
+  - entity: sensor
+    name: Current Temperature
+    class: temperature
+    dps:
+      - id: 125
+        type: base64
+        name: sensor
+        mask: "FF000000"
+        endianness: little
+        class: measurement
+        unit: C
